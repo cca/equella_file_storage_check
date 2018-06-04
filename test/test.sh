@@ -8,6 +8,7 @@ echo 'Attempting positive test (files match)'
 python staging-persistent-check.py 4eb14fb4-1b10-4527-914c-85610df0fb61 1 $storage test.sh file.jpg
 echo 'Attempting negative test (files mismatched)'
 python staging-persistent-check.py 4eb14fb4-1b10-4527-914c-85610df0fb61 1 $storage test.sh file.jpg doesnotexist.txt
+echo 'You should receive an email from this second test.'
 echo
 echo 'Contents of log file:'
 cat $log
