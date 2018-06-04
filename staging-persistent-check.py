@@ -37,7 +37,7 @@ time.sleep(1)
 
 persistent_files = os.listdir(persistent_path)
 persistent_files = set([f for f in persistent_files if isRealFile(f)])
-files_are_missing = not persistent_files.issubset(staging_files)
+files_are_missing = not staging_files.issubset(persistent_files)
 
 logfile = '/Users/ephetteplace/logs/log.txt'
 with open(logfile, 'a') as log:
