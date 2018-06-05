@@ -1,14 +1,18 @@
 #!/usr/bin/env fish
-set storage (pwd)/test
-set log ~/logs/log.txt
-# clean out log file
-echo -n '' > $log
+set storage (pwd)/test/storage
+set staging (pwd)/test/staging
+# this UUID is just a random VAULT item
+set uuid 4eb14fb4-1b10-4527-914c-85610df0fb61
+set logdir ~/logs
+set log $logdir/log.txt
+# clean out log directory then recreate log file
+rm -rf $logdir; and mkdir -p $logdir; and touch $log
 echo 'Attempting positive test (files match)'
-# this UUID & version are just to a random VAULT item
-python staging-persistent-check.py 4eb14fb4-1b10-4527-914c-85610df0fb61 1 $storage test.sh file.jpg
+python staging-persistent-check.py $uuid 1 $storage $staging file.txt file.jpg
 echo 'Attempting negative test (files mismatched)'
-python staging-persistent-check.py 4eb14fb4-1b10-4527-914c-85610df0fb61 1 $storage test.sh file.jpg doesnotexist.txt
+python staging-persistent-check.py $uuid 1 $storage $staging file.txt file.jpg doesnotexist.txt
 echo 'You should receive an email from this second test.'
-echo
-echo 'Contents of log file:'
+echo -e '\nContents of log file:'
 cat $log
+echo -e '\nContents of backup directory:'
+ls -l $logdir/$uuid/1
