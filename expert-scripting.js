@@ -7,9 +7,10 @@ if (staging.isAvailable()) {
     xml.deleteAll('local/stagingDir')
 
     var stagingFilesAndDirs = staging.listFiles("", "**")
-	for (var i = 0; i < stagingFilesAndDirs.size(); i++) {
-		xml.add('local/staging', stagingFilesAndDirs.get(i))
-	}
+    for (var i = 0; i < stagingFilesAndDirs.size(); i++) {
+        var filename = String(stagingFilesAndDirs.get(i)).replace(/:/g, '%3A')
+        xml.add('local/staging', filename)
+    }
 
     var stagingFiles = staging.list("/", "*")
     if (stagingFiles.size() > 0) {
