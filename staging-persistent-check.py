@@ -74,8 +74,6 @@ Staging files:
 
 Persistent storage:
         - %s
-
-Staging files were backed up to %s on the server.
 """ % (
         from_adr,
         ', '.join(to_adrs),
