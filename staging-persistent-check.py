@@ -4,6 +4,8 @@
 Usage: ./staging-persistent-check.py $ITEM_UUID $ITEM_VERSION $FILE_STORAGE_DIR $STAGING_FILE_1 $STAGING_FILE_2 ...
 
 Any number of positional staging files can be passed after the persistent file storage directory. This script will check the passed staging files against the contents of the persistent file storage, ignoring a few EQUELLA-generated directories (_uploads, _THUMBS, _VIDEOPREVIEW). It logs both directory listings to a hard-coded log file /Users/ephetteplace/logs/log.txt and then, if there are staging files that are not in the persistent file storage, sends an email to ephetteplace@cca.edu and vault@cca.edu with details.
+
+@TODO use python "logging" module instead of ad hoc code
 """
 import datetime
 import os
@@ -27,7 +29,7 @@ staging_files = sys.argv[5:]
 
 # test which skips EQUELLA-generated directories
 def isRealFile(str):
-    if not re.match("^_uploads", str) and not re.match("^_THUMBS", str) and not re.match("^_VIDEOPREVIEW", str):
+    if not re.match("^_uploads", str) and not re.match("^_THUMBS", str) and not re.match("^_VIDEOPREVIEW", str) and not re.match("^_TILES", str):
         return True
     else:
         return False
