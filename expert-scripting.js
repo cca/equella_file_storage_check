@@ -9,7 +9,12 @@ if (staging.isAvailable()) {
     var stagingFilesAndDirs = staging.listFiles("", "**")
     for (var i = 0; i < stagingFilesAndDirs.size(); i++) {
         var filename = String(stagingFilesAndDirs.get(i)).replace(/:/g, '%3A')
-        xml.add('local/staging', filename)
+        // skip files in some EQUELLA-generated directories
+        if (!filename.match('_THUMBS') &&
+            !filename.match('_TILES') &&
+            !filename.match('_VIDEOPREVIEW')) {
+            xml.add('local/staging', filename)
+        }
     }
 
     var stagingFiles = staging.list("/", "*")
