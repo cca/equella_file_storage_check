@@ -4,7 +4,7 @@ var uuid = currentItem.getUuid()
 var hash = currentItem.getUuid().hashCode() & 127
 var version = currentItem.getVersion()
 // beginning is the path to our filestore
-var filestore = "/mnt/equelladata01/Institutions/cca2012/Attachments/" + hash + "/" + uuid + "/" + currentItem.getVersion()
+var filestore = "/mnt/equelladata01/Institutions/cca2012/Attachments/" + hash + "/" + uuid + "/" + version
 var stagingdir = '/mnt/equelladata01/' + xml.get('local/stagingDir')
 // convert list-thing into JS array
 var stagingList = xml.list('local/staging')
