@@ -23,3 +23,5 @@ The staging files are eventually erased by EQUELLA, within a day it seems, so st
 # LICENSE
 
 [ECL Version 2.0](https://opensource.org/licenses/ECL-2.0)
+
+Except for the included "file-lister-save-script.js" from Apereo which follows the license referred to in its frontmatter.
